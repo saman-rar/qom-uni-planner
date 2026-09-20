@@ -1,28 +1,38 @@
 import formatClassTime from '@/lib/format-class-time';
 import { Course } from '@/lib/mock-data';
-import { useMemo } from 'react';
+import { Dispatch, SetStateAction, useMemo } from 'react';
 
 const hours = Array.from({ length: 13 }, (_, i) => i + 8);
 
 interface WeekViewProps {
   days: string[];
-  courses: Course[];
+  classes: Course[];
+  setClassDetail: Dispatch<SetStateAction<Course | null>>;
   selectedIds: string[];
-  toggleCourse: (course: Course) => void;
   colorMap: Record<string, string>;
+  setSelectedIds: Dispatch<SetStateAction<string[]>>;
 }
 
 const WeekView = ({
   days,
-  courses,
+  classes,
+  setClassDetail,
   selectedIds,
-  toggleCourse,
+  setSelectedIds,
   colorMap,
 }: WeekViewProps) => {
   const selected = useMemo(
-    () => courses.filter((course) => selectedIds.includes(course.id)),
+    () => classes.filter((course) => selectedIds.includes(course.id)),
     [selectedIds],
   );
+
+  const toggleCourse = (course: Course) => {
+    setSelectedIds((prev) =>
+      prev.includes(course.id)
+        ? prev.filter((id) => id !== course.id)
+        : [...prev, course.id],
+    );
+  };
 
   return (
     <div className='overflow-auto w-full'>
@@ -73,7 +83,7 @@ const WeekView = ({
                   return (
                     <button
                       key={course.id}
-                      onClick={() => toggleCourse(course)}
+                      onClick={() => setClassDetail(course)}
                       className={`absolute left-1.5 right-1.5 overflow-hidden rounded-xl border p-2 text-right shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${colorMap[course.color]}`}
                       style={{
                         top: `calc(${top}% + 4px)`,
