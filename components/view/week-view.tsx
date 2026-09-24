@@ -35,7 +35,7 @@ const WeekView = ({
   };
 
   return (
-    <div className='overflow-auto w-full'>
+    <div className='w-full min-w-160'>
       <div className='w-full'>
         <div className='grid grid-cols-[64px_repeat(5,1fr)] bg-muted/25'>
           <div className='border-l border-border' />

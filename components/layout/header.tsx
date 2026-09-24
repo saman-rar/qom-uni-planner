@@ -1,11 +1,9 @@
 import { Download, GraduationCap, MoonIcon, Share2, Sun } from 'lucide-react';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
-import { useTheme } from 'next-themes';
+import ThemeToggle from '../them-toggle';
 
 const Header = () => {
-  const { theme, setTheme } = useTheme();
-
   return (
     <header className='mb-3 flex items-center justify-between rounded-3xl border border-border bg-card/80 px-4 py-3 shadow-sm backdrop-blur md:px-6'>
       <div className='flex items-center gap-3'>
@@ -25,20 +23,7 @@ const Header = () => {
         </div>
       </div>
       <div className='flex items-center gap-2'>
-        <Button
-          variant='outline'
-          size='icon'
-          onClick={() =>
-            setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
-          }
-          aria-label='تغییر پوسته'
-        >
-          {theme === 'dark' ? (
-            <Sun className='size-4' />
-          ) : (
-            <MoonIcon className='size-4' />
-          )}
-        </Button>
+        <ThemeToggle />
         <Button variant='outline' className='hidden sm:inline-flex'>
           <Share2 className='size-4' /> اشتراک
         </Button>

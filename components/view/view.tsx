@@ -41,7 +41,7 @@ const View = ({
   const [view, setView] = useState<'week' | 'month'>('week');
 
   return (
-    <Card className='order-2 min-h-[650px] overflow-hidden xl:order-1'>
+    <Card className='order-2 min-h-[650px] xl:order-1'>
       <HeaderView
         courses={courses}
         selectedIds={selectedIds}
@@ -50,23 +50,25 @@ const View = ({
         view={view}
       />
 
-      {view === 'week' ? (
-        <WeekView
-          colorMap={colorMap}
-          classes={courses}
-          days={days}
-          selectedIds={selectedIds}
-          setSelectedIds={setSelectedIds}
-          setClassDetail={setCourseDetail}
-        />
-      ) : (
-        <MonthView
-          colorMap={colorMap}
-          courses={courses}
-          selectedIds={selectedIds}
-          setExamDetail={setCourseDetail}
-        />
-      )}
+      <div className='overflow-hidden overflow-x-scroll'>
+        {view === 'week' ? (
+          <WeekView
+            colorMap={colorMap}
+            classes={courses}
+            days={days}
+            selectedIds={selectedIds}
+            setSelectedIds={setSelectedIds}
+            setClassDetail={setCourseDetail}
+          />
+        ) : (
+          <MonthView
+            colorMap={colorMap}
+            courses={courses}
+            selectedIds={selectedIds}
+            setExamDetail={setCourseDetail}
+          />
+        )}
+      </div>
 
       <FooterView
         courses={courses}

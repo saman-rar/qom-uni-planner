@@ -5,12 +5,14 @@ import { Card } from '../ui/card';
 import CourseFilter from './course-filter';
 import CourseList from './course-list';
 import { Course } from '@/lib/mock-data';
+import { cn } from 'cn';
 
 interface CourseSelectProps {
   courses: Course[];
   selectedIds: string[];
   days: string[];
   setSelectedIds: Dispatch<SetStateAction<string[]>>;
+  className?: string;
 }
 
 const CourseSelect = ({
@@ -18,6 +20,7 @@ const CourseSelect = ({
   days,
   selectedIds,
   setSelectedIds,
+  className,
 }: CourseSelectProps) => {
   const [query, setQuery] = useState('');
   const [faculty, setFaculty] = useState('مهندسی و فناوری');
@@ -38,7 +41,9 @@ const CourseSelect = ({
   }, [query, faculty, group]);
 
   return (
-    <Card className='order-1 flex max-h-[calc(100vh-118px)] min-h-[650px] flex-col overflow-hidden xl:order-2'>
+    <Card
+      className={cn('flex min-h-[650px] flex-col overflow-hidden', className)}
+    >
       <CourseFilter
         faculty={faculty}
         setFaculty={setFaculty}

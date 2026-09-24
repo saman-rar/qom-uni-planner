@@ -2,6 +2,7 @@ import { CirclePlus, Search } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Dispatch, SetStateAction } from 'react';
 import { faculties, groups } from '@/lib/mock-data';
+import CustomComboBox from '../custom/custom-combobox';
 
 interface CourseFilterProps {
   faculty: string;
@@ -21,7 +22,7 @@ const CourseFilter = ({
   setQuery,
 }: CourseFilterProps) => {
   return (
-    <div className='border-b border-border p-4'>
+    <div className='border-b border-border px-4 pb-4'>
       <div className='mb-3 flex items-center justify-between'>
         <div>
           <h2 className='font-extrabold'>دروس ارائه‌شده</h2>
@@ -29,32 +30,21 @@ const CourseFilter = ({
             داده آزمایشی برای دموی سامانه
           </p>
         </div>
-        <CirclePlus className='size-5 text-primary' />
       </div>
       <div className='grid grid-cols-2 gap-2'>
         <label className='space-y-1.5 text-xs text-muted-foreground'>
-          دانشکده
-          <select
-            value={faculty}
-            onChange={(e) => setFaculty(e.target.value)}
-            className='h-10 w-full rounded-xl border border-input bg-background px-3 text-sm text-foreground outline-none'
-          >
-            {faculties.map((item) => (
-              <option key={item}>{item}</option>
-            ))}
-          </select>
+          <CustomComboBox
+            emptyText='هیچ دانکشده‌ای پیدا نشد.'
+            placeholder='دانشکده'
+            items={faculties}
+          />
         </label>
         <label className='space-y-1.5 text-xs text-muted-foreground'>
-          گروه آموزشی
-          <select
-            value={group}
-            onChange={(e) => setGroup(e.target.value)}
-            className='h-10 w-full rounded-xl border border-input bg-background px-3 text-sm text-foreground outline-none'
-          >
-            {groups.map((item) => (
-              <option key={item}>{item}</option>
-            ))}
-          </select>
+          <CustomComboBox
+            emptyText='هیچ رشته‌ای پیدا نشد.'
+            placeholder='رشته تحصیلی'
+            items={groups}
+          />
         </label>
       </div>
       <div className='relative mt-3'>

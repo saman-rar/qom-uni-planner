@@ -540,9 +540,6 @@ export default function SpecialGuide({
         <div className='p-6 overflow-y-auto'>
           {/* Select شبیه‌سازی شده Shadcn */}
           <div className='flex mb-6 relative'>
-            <label className='block mb-2 text-sm font-medium text-foreground'>
-              انتخاب نیمسال تحصیلی:
-            </label>
             <div
               className='relative flex items-center justify-between w-full px-3 py-2 text-sm bg-popover border border-gray-300 rounded-md cursor-pointer hover:bg-popover/50 focus:outline-none focus:ring-2 focus:ring-blue-500'
               onClick={() => setIsSelectOpen(!isSelectOpen)}
@@ -574,7 +571,7 @@ export default function SpecialGuide({
           </div>
 
           {/* Table شبیه‌سازی شده Shadcn */}
-          <div className='border rounded-md overflow-hidden'>
+          <div className='border rounded-md overflow-x-auto overflow-hidden min-w-150'>
             <table className='w-full text-sm text-right text-muted-foreground'>
               <thead className='text-xs text-foreground bg-accent border-b'>
                 <tr>

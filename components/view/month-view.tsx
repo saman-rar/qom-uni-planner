@@ -71,7 +71,7 @@ const MonthView = ({
   );
 
   return (
-    <div className='p-3 md:p-5'>
+    <div className='p-3 md:p-5 min-w-160'>
       <div className='mb-4 flex flex-wrap items-center justify-between gap-3'>
         <div>
           <h2 className='text-base font-extrabold'>تقویم امتحانات · دی ۱۴۰۵</h2>
@@ -108,7 +108,7 @@ const MonthView = ({
               return (
                 <div
                   key={index}
-                  className={`aspect-square min-h-[118px] border-l border-b border-border p-2 last:border-l-0 ${
+                  className={`min-h-20 border-l border-b border-border p-2 last:border-l-0 ${
                     day ? 'bg-card' : 'bg-muted/15'
                   } ${isFriday && day ? 'bg-destructive/[0.025]' : ''}`}
                 >

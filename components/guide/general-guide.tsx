@@ -216,9 +216,6 @@ export default function GeneralGuide({
         <div className='p-6 overflow-y-auto'>
           {/* Select */}
           <div className='flex mb-6 relative w-72'>
-            <label className='block mb-2 ml-3 text-sm font-medium text-foreground self-center'>
-              دسته‌بندی دروس:
-            </label>
             <div
               className='relative flex items-center justify-between w-full px-3 py-2 text-sm bg-popover border border-input rounded-md cursor-pointer hover:bg-popover/50 focus:outline-none focus:ring-2 focus:ring-ring'
               onClick={() => setIsSelectOpen(!isSelectOpen)}
@@ -226,7 +223,6 @@ export default function GeneralGuide({
               <span className='text-foreground'>{selectedCategory}</span>
               <ChevronDown className='w-4 h-4 text-muted-foreground' />
             </div>
-
             {isSelectOpen && (
               <div className='absolute z-10 w-full mt-1 bg-popover border border-border rounded-md shadow-lg top-full max-h-60 overflow-auto'>
                 {Object.keys(generalCoursesData).map((category) => (
@@ -250,7 +246,7 @@ export default function GeneralGuide({
           </div>
 
           {/* Table */}
-          <div className='border border-border rounded-md overflow-hidden'>
+          <div className='border border-border rounded-md overflow-auto min-w-150'>
             <table className='w-full text-sm text-right text-muted-foreground'>
               <thead className='text-xs text-foreground bg-accent border-b border-border'>
                 <tr>

@@ -8,6 +8,8 @@ import CourseSelect from './course/course-select';
 import CourseDetailModal from './course-detail-modal';
 import { Button } from './ui/button';
 import SelectionGuide from './guide/guide';
+import CourseSelectSheet from './course/course-select-sheet';
+import ThemeToggle from './them-toggle';
 
 const days = ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه'];
 
@@ -44,8 +46,8 @@ export function CoursePlanner() {
               setCourseDetail={setCoureDetail}
             />
 
-            <div>
-              <div className='flex gap-2 mb-3 text-sm lg:text-md'>
+            <div className='order-1 xl:order-2'>
+              <div className='flex gap-2 mb-5 text-sm lg:text-md sticky xl:relative top-2 right-0 backdrop-blur-xl p-3 rounded-3xl bg-foreground/5 mx-5 xl:mx-0'>
                 <Button
                   onClick={() => setSelectionGuide('special')}
                   className='flex-1 py-5'
@@ -60,8 +62,18 @@ export function CoursePlanner() {
                 >
                   راهنمای دروس عمومی
                 </Button>
+                <CourseSelectSheet
+                  className='xl:hidden flex-1 py-5'
+                  courses={courses}
+                  days={days}
+                  selectedIds={selectedIds}
+                  setSelectedIds={setSelectedIds}
+                >
+                  دروس
+                </CourseSelectSheet>
               </div>
               <CourseSelect
+                className='max-h-[calc(100vh-118px)]'
                 courses={courses}
                 days={days}
                 selectedIds={selectedIds}
